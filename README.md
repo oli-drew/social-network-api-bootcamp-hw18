@@ -34,11 +34,29 @@ Once installation steps above have been completed, open an api testing applicati
 
 ### Creating data
 
+- Post a user: `http://localhost:3001/api/users`
+- Post new friend to user: `http://localhost:3001/api/users/{userId}/friends/{friendId}`
+- Post a new thought: `http://localhost:3001/api/thoughts/`
+- Post a new reaction: `http://localhost:3001/api/thoughts/{thoughtId}/reactions`
+
 ### Reading data
+
+- Get all users: `http://localhost:3001/api/users`
+- Get a single user: `http://localhost:3001/api/users/{userId}`
+- Get all thoughts: `http://localhost:3001/api/thoughts`
+- Get a single thought: `http://localhost:3001/api/thoughts/{thoughtId}`
 
 ### Updating data
 
+- Update a single user: `http://localhost:3001/api/users/{userId}`
+- Update a thought: `http://localhost:3001/api/thoughts/{thoughtId}`
+
 ### Deleting data
+
+- Delete a user: `http://localhost:3001/api/users/{userId}`
+- Delete a friend from a user: `http://localhost:3001/api/users/{userId}/friends/{friendId}`
+- Delete a thought: `http://localhost:3001/api/thoughts/{thoughtId}`
+- Delete a reaction: `http://localhost:3001/api/thoughts/{thoughId}/reactions/{reactionId}`
 
 ### Walkthrough Video
 
@@ -57,6 +75,7 @@ The following technology stack was used:
 - Mongoose ODM
 - MongoDB
 - DayJS
+- Validator
 
 ## License
 
