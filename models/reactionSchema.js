@@ -2,7 +2,7 @@ const { Schema, Types } = require("mongoose");
 // Import dayjs for date-time formatting
 const dayjs = require("dayjs");
 
-// Reaction model schema
+// Reaction schema
 const reactionSchema = new Schema(
   {
     reactionId: {
