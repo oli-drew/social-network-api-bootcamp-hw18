@@ -50,7 +50,20 @@ module.exports = {
     }
   },
   // Remove existing user
-  removeUser(req, res) {},
+  async removeUser(req, res) {
+    try {
+      const user = await User.findOneAndRemove({ _id: req.params.userId });
+      // Check if user exists
+      if (!user) {
+        res.status(404).json({ message: "I can't find a user with that ID!" });
+      } else {
+        // Thoughts.deleteMany({ _id: { $in: user.thoughts } });
+        res.json({ message: "User and their thoughts removed" });
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
   // Add a friend to user
   addFriend(req, res) {},
   // Remove friend from user
