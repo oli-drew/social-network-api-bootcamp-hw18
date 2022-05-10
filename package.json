@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/oli-drew/social-network-api-bootcamp-hw18.git"
   },
-  "keywords": [],
+  "keywords": ["Social Network"],
   "author": "Oliver Drew",
   "license": "MIT",
   "bugs": {
