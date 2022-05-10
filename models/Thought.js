@@ -13,12 +13,6 @@ const thoughtSchema = new Schema(
       get: (createdAt) => dayjs(createdAt).format("DD-MM-YY hh:mm"),
     },
     username: { type: String, required: true },
-    thoughts: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Thoughts",
-      },
-    ],
     reactions: [reactionSchema],
   },
   {

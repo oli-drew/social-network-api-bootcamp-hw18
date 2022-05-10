@@ -11,15 +11,12 @@ const {
 } = require("../../controllers/thoughtController");
 
 // /api/thoughts/:thoughtId
-// router
-// .route("/:thoughtId")
-// .get(getSingleThought)
+router.route("/:thoughtId").get(getSingleThought);
 // .put(updateThought)
 // .delete(removeThought);
 
 // /api/thoughts
-router.route("/").get(getThoughts);
-// .post(createThought);
+router.route("/").get(getThoughts).post(createThought);
 
 // /api/thoughts/:thoughtId/reactions
 // router
