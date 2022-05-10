@@ -36,6 +36,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Update thought
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -53,6 +54,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Remove thought
   async removeThought(req, res) {
     try {
       const thought = await Thought.findOneAndRemove({
@@ -70,14 +72,34 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Create reaction
   async createReaction(req, res) {
     try {
+      const thought = await Thought.findByIdAndUpdate(
+        { _id: req.params.thoughtId },
+        { $addToSet: { reactions: req.body } },
+        { runValidators: true, new: true }
+      );
+      !thought
+        ? res
+            .status(404)
+            .json({ message: "I can't find a thought with that ID!" })
+        : res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
   },
+  // Remove reaction
   async removeReaction(req, res) {
     try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: { reactionId: req.body.reactionId } } },
+        { new: true }
+      );
+      !thought
+        ? res.status(404).json({ message: "No thought found with that ID" })
+        : res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }

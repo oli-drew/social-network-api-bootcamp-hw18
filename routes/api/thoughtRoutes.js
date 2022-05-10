@@ -21,9 +21,9 @@ router
 router.route("/").get(getThoughts).post(createThought);
 
 // /api/thoughts/:thoughtId/reactions
-// router
-// .route("/:thoughtId/reactions")
-// .post(createReaction)
-// .delete(removeReaction);
+router
+  .route("/:thoughtId/reactions")
+  .post(createReaction)
+  .delete(removeReaction);
 
 module.exports = router;

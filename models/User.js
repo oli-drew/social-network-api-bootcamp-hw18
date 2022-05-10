@@ -13,7 +13,6 @@ const userSchema = new Schema(
       trim: true,
       validate: [validator.isEmail, "Please use a valid email address"],
     },
-    age: Number,
     thoughts: [
       {
         type: Schema.Types.ObjectId,
