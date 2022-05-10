@@ -38,12 +38,34 @@ module.exports = {
   },
   async updateThought(req, res) {
     try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $set: req.body },
+        { runValidators: true, new: true }
+      );
+      // Check if thought exists
+      !thought
+        ? res
+            .status(404)
+            .json({ message: "I can't find a thought with that ID!" })
+        : res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
   },
   async removeThought(req, res) {
     try {
+      const thought = await Thought.findOneAndRemove({
+        _id: req.params.thoughtId,
+      });
+      // Check if thought exists
+      if (!thought) {
+        res
+          .status(404)
+          .json({ message: "I can't find a thought with that ID!" });
+      } else {
+        res.json({ message: "Thought removed" });
+      }
     } catch (err) {
       res.status(500).json(err);
     }
