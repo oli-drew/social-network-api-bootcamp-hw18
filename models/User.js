@@ -28,7 +28,7 @@ const userSchema = new Schema(
     ],
   },
   {
-    // Virtuals enables for friend count
+    // Virtuals enabled for friend count
     toJSON: {
       virtuals: true,
     },
